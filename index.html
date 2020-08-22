@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Insert Text</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <style>
+        .container {
+            width: 40%;
+            padding: 1%;
+            float: left;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="container">
+        <div id="editor">
+            <p>Hello World!</p>
+            <p>Some initial <strong>bold</strong> text</p>
+            <p><br></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="custom-toolbar">
+            <!-- Add buttons as you would before -->
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+
+            <!-- But you can also add your own -->
+            <button id="custom-button"></button>
+        </div>
+        <div id="custom-editor"></div>
+    </div>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <script>
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+
+        var customquill = new Quill('#custom-editor', {
+            modules: {
+                toolbar: '#custom-toolbar'
+            }
+        });
+    </script>
 </body>
 </html>
