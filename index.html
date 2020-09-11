@@ -24,66 +24,41 @@
 
 <body>
     <div class="container">
-        <div id="editor">
-            <p>Hello World!</p>
-            <p>Some initial <strong>bold</strong> text</p>
-            <p><br></p>
-        </div>
+        <div id="editor"></div>
     </div>
     <!-- Create the editor container -->
     <div class="container">
-        <div id="floating-toolbar2">
-            <button class="ql-bold"></button>
-            <button class="ql-italic"></button>
-            <button class="ql-underline"></button>
-            <button class="ql-list" value="ordered"></button>
-            <button class="ql-list" value="bullet"></button>
-        </div>
         <div id="floating-editor">
         </div>
     </div>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script>
         var toolbarOptions = [
-            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-            ['blockquote', 'code-block'],
-
-            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            ['bold', 'italic'],        // toggled buttons
+            ['blockquote'],
+                        // custom button values
             [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
-            [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
-            [{ 'direction': 'rtl' }],                         // text direction
+            [{ 'script': 'sub' }, { 'script': 'super' }],     // text direction
 
-            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+    
+            [{ 'header': [1, 2, 3, false] }],
 
-            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-            [{ 'font': [] }],
-            [{ 'align': [] }],
-
-            ['clean']
+            [{ 'align': [] }]
         ];
 
         var quill = new Quill('#editor', {
             theme: 'snow',
+            placeholder: 'Compose an epic...',
             modules: {
                 toolbar: toolbarOptions,
             }
         });
 
         var floatingQuill = new Quill('#floating-editor', {
-            theme: 'snow',
-            placeholder: 'Compose an epic...',
-            modules: {
-                toolbar: toolbarOptions,
-            }
-        });
-
-        var floatingToolbar = new Quill('#floating-editor', {
             theme: 'bubble',
             placeholder: 'Compose an epic...',
             modules: {
-                toolbar: '#floating-toolbar2',
+                toolbar: toolbarOptions,
             }
         });
     </script>
